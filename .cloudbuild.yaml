@@ -12,6 +12,7 @@ steps:
   dir: aws-security-viz
   name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/aws-security-viz', '.' ]
+  waitFor: [ 'graphviz-gts' ]
 - id: awscli
   dir: awscli
   name: 'gcr.io/cloud-builders/docker'
@@ -36,6 +37,7 @@ steps:
   dir: slex
   name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/slex', '.' ]
+  waitFor: [ 'alpine-ops', 'alpine-cbuild' ]
 
 images:
 - 'gcr.io/$PROJECT_ID/alpine-cbuild'
