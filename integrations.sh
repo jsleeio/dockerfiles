@@ -1,3 +1,6 @@
 # bash aliases
 
-alias aws='docker run --interactive --tty --rm --volume=$HOME/.aws:/home/user/.aws gcr.io/jsleeio-containers/awscli:latest'
+jsleeio_containers_root=gcr.io/jsleeio-containers
+
+alias aws="docker run --interactive --tty --rm --volume=$HOME/.aws:/home/user/.aws $jsleeio_containers_root/awscli:latest"
+alias man-linux="docker run --interactive --tty --rm $jsleeio_containers_root/man:latest"

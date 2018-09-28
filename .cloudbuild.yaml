@@ -8,6 +8,10 @@ steps:
   dir: alpine-ops
   name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/alpine-ops', '.' ]
+- id: aws-security-viz
+  dir: aws-security-viz
+  name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/aws-security-viz', '.' ]
 - id: awscli
   dir: awscli
   name: 'gcr.io/cloud-builders/docker'
@@ -16,10 +20,18 @@ steps:
   dir: debian-cbuild
   name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/debian-cbuild', '.' ]
+- id: graphviz-gts
+  dir: graphviz-gts
+  name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/graphviz-gts', '.' ]
 - id: jsonwebtokencli
   dir: jsonwebtokencli
   name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/jsonwebtokencli', '.' ]
+- id: man
+  dir: man
+  name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/man', '.' ]
 - id: slex
   dir: slex
   name: 'gcr.io/cloud-builders/docker'
@@ -28,7 +40,10 @@ steps:
 images:
 - 'gcr.io/$PROJECT_ID/alpine-cbuild'
 - 'gcr.io/$PROJECT_ID/alpine-ops'
+- 'gcr.io/$PROJECT_ID/aws-security-viz'
 - 'gcr.io/$PROJECT_ID/awscli'
 - 'gcr.io/$PROJECT_ID/debian-cbuild'
+- 'gcr.io/$PROJECT_ID/graphviz-gts'
 - 'gcr.io/$PROJECT_ID/jsonwebtokencli'
+- 'gcr.io/$PROJECT_ID/man'
 - 'gcr.io/$PROJECT_ID/slex'
