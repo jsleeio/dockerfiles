@@ -42,6 +42,7 @@ steps:
   waitFor:
     - graphviz-gts
 
+timeout: 30m
 images:
 - 'gcr.io/$PROJECT_ID/alpine-cbuild'
 - 'gcr.io/$PROJECT_ID/alpine-ops'

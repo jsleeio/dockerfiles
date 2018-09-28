@@ -61,6 +61,7 @@ for seq in {1..5} ; do
 done
 
 echo
+echo "timeout: 30m"
 echo "images:"
 for step in $tobuild ; do
   echo "- 'gcr.io/\$PROJECT_ID/$step'"
