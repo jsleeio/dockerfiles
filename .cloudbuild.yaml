@@ -12,6 +12,10 @@ steps:
   dir: awscli
   name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/awscli', '.' ]
+- id: consolemd
+  dir: consolemd
+  name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/consolemd', '.' ]
 - id: debian-cbuild
   dir: debian-cbuild
   name: 'gcr.io/cloud-builders/docker'
@@ -20,6 +24,10 @@ steps:
   dir: firebase-cli
   name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/firebase-cli', '.' ]
+- id: github-graphql-cli
+  dir: github-graphql-cli
+  name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/github-graphql-cli', '.' ]
 - id: graphviz-gts
   dir: graphviz-gts
   name: 'gcr.io/cloud-builders/docker'
@@ -39,6 +47,10 @@ steps:
   waitFor:
     - alpine-ops
     - alpine-cbuild
+- id: stubby-configurator
+  dir: stubby-configurator
+  name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/stubby-configurator', '.' ]
 - id: unbound-tls
   dir: unbound-tls
   name: 'gcr.io/cloud-builders/docker'
@@ -59,10 +71,13 @@ images:
 - 'gcr.io/$PROJECT_ID/alpine-ops'
 - 'gcr.io/$PROJECT_ID/aws-security-viz'
 - 'gcr.io/$PROJECT_ID/awscli'
+- 'gcr.io/$PROJECT_ID/consolemd'
 - 'gcr.io/$PROJECT_ID/debian-cbuild'
 - 'gcr.io/$PROJECT_ID/firebase-cli'
+- 'gcr.io/$PROJECT_ID/github-graphql-cli'
 - 'gcr.io/$PROJECT_ID/graphviz-gts'
 - 'gcr.io/$PROJECT_ID/jsonwebtokencli'
 - 'gcr.io/$PROJECT_ID/man'
 - 'gcr.io/$PROJECT_ID/slex'
+- 'gcr.io/$PROJECT_ID/stubby-configurator'
 - 'gcr.io/$PROJECT_ID/unbound-tls'
