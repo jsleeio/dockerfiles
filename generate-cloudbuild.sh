@@ -9,7 +9,7 @@ if [ "$BASH_VERSINFO" -lt 4 ] ; then
   exit 1
 fi
 
-tobuild="$(find . -type f -name Dockerfile -mindepth 2 -maxdepth 2 \
+tobuild="$(find . -mindepth 2 -maxdepth 2 -type f -name Dockerfile \
   | sort -n \
   | xargs -n 1 dirname \
   | xargs -n 1 basename)"
