@@ -35,7 +35,7 @@ jobs:
       - name: Build and push Docker image ${{ matrix.workdir }}
         uses: docker/build-push-action@v2
         with:
-          working-directory: ${{ matrix.workdir }}
-          context: .
+          file: ${{ matrix.workdir }}/Dockerfile
+          context: ${{ matrix.workdir}}
           push: true
           tags: ${{ env.REGISTRY }}/${{ github.actor }}/${{ matrix.workdir }}:latest
