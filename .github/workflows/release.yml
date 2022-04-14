@@ -1,0 +1,41 @@
+name: Build & publish container images
+on:
+  push:
+    branches:
+      - master
+
+env:
+  REGISTRY: ghcr.io
+
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        workdir:
+          - awscli
+          - jsonwebtokencli
+          - rpi-pico-builder 
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image ${{ matrix.workdir }}
+        uses: docker/build-push-action@v2
+        with:
+          working-directory: ${{ matrix.workdir }}
+          context: .
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ github.actor }}/${{ matrix.workdir }}:latest
